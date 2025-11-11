@@ -10,6 +10,8 @@
     "preview": "vite build && vite preview --host"
   },
   "dependencies": {
+    "0g": "^0.4.2",
+    "npm": "^11.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
