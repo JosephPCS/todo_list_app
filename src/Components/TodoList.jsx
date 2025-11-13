@@ -5,6 +5,8 @@ const TodoList = () => {
   const [todos,setTodos] = useState([]);
   const [headingInput, setHeadingInput] = useState("");
   const [listInputs,setListInputs] = useState({});
+ 
+
 
   const handleAddTodo = () =>{
     if(headingInput.trim() !== ""){
@@ -21,7 +23,7 @@ const TodoList = () => {
   const handleAddList = (index) => {
     if(listInputs[index].trim() !== '' && listInputs[index]){
         const newTodos = [...todos];
-        newTodos[index].lists.push(listInputs[index]);
+        newTodos[index].lists.push({text : listInputs[index], crossed: false});
         setTodos(newTodos);
         setListInputs({...listInputs, [index]: ''});
 
@@ -38,6 +40,12 @@ const handleDeleteTodo = (index) => {
     setTodos(newTodos);
 
 };
+
+const isCrossed = (index, listIndex) => {
+    const newTodos = [...todos];
+    newTodos[index].lists[listIndex].crossed = !newTodos[index].lists[listIndex].crossed;
+    setTodos(newTodos);
+ }
 
   return (
     <>
@@ -71,7 +79,9 @@ const handleDeleteTodo = (index) => {
                 <ul>
                     {todo.lists.map((list, listIndex) => (
                         <li key={listIndex} className='todo_inside_list'>
-                            <p>{list}</p>
+                            <p style={{textDecoration: list.crossed ? 'line-through' : 'none'}}>{list.text}</p>
+                            <button className='complete-button' onClick={() => isCrossed(index,listIndex)}>{list.crossed ? 'Completed' : 'Complete'}</button>
+                            
                         </li>
                     ))}
                 </ul>

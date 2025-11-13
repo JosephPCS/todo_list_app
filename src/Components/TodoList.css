@@ -111,6 +111,17 @@
     transition: background-color 0.3s ease;
     margin-left: 25px;
 }
+.complete-button{
+     background-color: rgb(46, 163, 46);
+    color: #fff;
+    border: none;
+    padding: 7px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 25px;
+}
 .todo_inside_list {
     display: flex;
     gap: 140px;
