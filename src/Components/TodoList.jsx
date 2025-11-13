@@ -42,9 +42,24 @@ const handleDeleteTodo = (index) => {
 };
 
 const isCrossed = (index, listIndex) => {
-    const newTodos = [...todos];
-    newTodos[index].lists[listIndex].crossed = !newTodos[index].lists[listIndex].crossed;
-    setTodos(newTodos);
+    // const newTodos = [...todos];
+    // newTodos[index].lists[listIndex].crossed = !newTodos[index].lists[listIndex].crossed;
+    // setTodos(newTodos);
+
+    setTodos(prevTodos => prevTodos.map((todo,i) =>
+        i===index ? {
+          ...todo, /// create a new object
+            lists: todo.lists.map((list,j) =>  // mapss the list at that todo
+              j === listIndex ? {...list, crossed: !list.crossed} : list // takes the current object variation and alters it so crossed can be true
+            ),
+
+        } : todo
+
+       
+
+      )
+
+    )
  }
 
   return (
